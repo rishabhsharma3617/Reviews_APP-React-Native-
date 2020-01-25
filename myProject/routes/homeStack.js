@@ -10,7 +10,7 @@ const screens = {
         screen : Home,
         navigationOptions : (props) => {
             return {
-                headerTitle : () => <Header navigation={props.navigation}/>
+                headerTitle : () => <Header navigation={props.navigation} title='HOME'/>
             }
         }
     },
@@ -26,7 +26,7 @@ const screens = {
 const HomeStack = createStackNavigator(screens , {
     defaultNavigationOptions : {
         headerTintColor : '#444',
-        headerStyle : { backgroundColor : '#eee'}
+        headerStyle : { backgroundColor : '#eee' , height : 100}
     }
 })
 export default HomeStack

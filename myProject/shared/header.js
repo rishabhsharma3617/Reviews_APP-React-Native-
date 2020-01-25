@@ -1,6 +1,13 @@
-import React from 'react'
+import React , {Component} from 'react'
 import { StyleSheet , Text , View, ShadowPropTypesIOS } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
+
+import { Platform, StatusBar } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+
+// if (Platform.OS === 'android') {
+//   SafeAreaView.setStatusBarHeight(StatusBar.currentHeight);
+// } 
 
 export default function Header( props ) {
 
@@ -8,10 +15,10 @@ export default function Header( props ) {
         props.navigation.openDrawer()
     }
     return(
-        <View>
+        <View style={styles.header}>
             <MaterialIcons name='menu' onPress={openMenu} size={30} style={styles.icon}/>
             <View>
-                <Text style={ styles.headerText }>GameZone</Text>
+                    <Text style={ styles.headerText }>{props.title}</Text>
             </View>
         </View>
     )
@@ -19,20 +26,26 @@ export default function Header( props ) {
 
 const styles = StyleSheet.create({
     header : {
-        width : '100%',
-        height : '100%',
+        
+        marginLeft : 0,
+        
+        width : '480%',
+        height : '150%',
         flexDirection : 'row',
         alignItems : 'center',
-        justifyContent : 'center'
+        justifyContent : 'center',
+    
+        
     },
     headerText : {
         fontWeight : 'bold',
         fontSize : 20,
-        color : '#333',
+        color : 'blue',
         letterSpacing : 1, 
     },
     icon : {
         position : 'absolute',
-        left : '20px',
+        left : 0,
+        color : 'red'
     }
 })
