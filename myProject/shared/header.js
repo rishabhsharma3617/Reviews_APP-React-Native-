@@ -1,5 +1,5 @@
 import React , {Component} from 'react'
-import { StyleSheet , Text , View, Image } from 'react-native'
+import { StyleSheet , Text , View, Image ,ImageBackground} from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { Platform, StatusBar } from 'react-native';
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         marginLeft : 0,
         
         width : '300%',
-        height : '150%',
+        height : '100%',
         flexDirection : 'row',
         alignItems : 'center',
         justifyContent : 'center',
