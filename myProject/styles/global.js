@@ -20,7 +20,16 @@ export const globalStyles = StyleSheet.create({
         padding : 10,
         fontSize : 18,
         borderRadius : 6,
+    },
+    errorText : {
+        color : 'crimson',
+        fontWeight : 'bold',
+        marginBottom : 10,
+        marginTop : 6,
+        textAlign : 'center'
     }
+    
+
 })
 
 export const images = {

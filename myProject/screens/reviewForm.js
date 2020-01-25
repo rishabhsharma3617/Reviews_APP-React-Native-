@@ -4,6 +4,7 @@ import { globalStyles } from '../styles/global'
 import  { Formik } from 'formik'
 import { TextInput } from 'react-native-gesture-handler';
 import * as Yup from 'yup'
+import FlatButton from '../shared/button'
 
 
 
@@ -36,7 +37,9 @@ export default function ReviewForm(props) {
                             placeholder='Series Title'
                             onChangeText={props.handleChange('title')}
                             value={props.values.title}
+                            onBlur={props.handleBlur('title')}
                             />
+                            <Text style={globalStyles.errorText}>{ props.touched.title  && props.errors.title}</Text>
 
                             <TextInput 
                             multiline
@@ -44,7 +47,9 @@ export default function ReviewForm(props) {
                             placeholder='Give your Review'
                             onChangeText={props.handleChange('body')}
                             value={props.values.body}
+                            onBlur={props.handleBlur('body')}
                             />
+                            <Text style={globalStyles.errorText}>{ props.touched.body && props.errors.body}</Text>
 
                             <TextInput 
 
@@ -53,8 +58,12 @@ export default function ReviewForm(props) {
                             keyboardType = 'numeric'
                             onChangeText={props.handleChange('rating')}
                             value={props.values.rating}
+                            onBlur={props.handleBlur('rating')}
                             />
-                            <Button title='submit' color='maroon' onPress={props.handleSubmit}/>
+                            
+                           
+                            <FlatButton text='submit' onPress={props.handleSubmit}/>
+                            <Text style={globalStyles.errorText}>{ props.touched.rating && props.errors.rating}</Text>
                         </View>
                     )}
                 </Formik>
