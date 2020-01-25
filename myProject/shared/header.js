@@ -1,5 +1,5 @@
 import React , {Component} from 'react'
-import { StyleSheet , Text , View, ShadowPropTypesIOS } from 'react-native'
+import { StyleSheet , Text , View, Image } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { Platform, StatusBar } from 'react-native';
@@ -17,7 +17,8 @@ export default function Header( props ) {
     return(
         <View style={styles.header}>
             <MaterialIcons name='menu' onPress={openMenu} size={30} style={styles.icon}/>
-            <View>
+            <View style={styles.headerContent}>
+                    <Image source={require('../assets/heart_logo.png')} style={styles.logo}/>
                     <Text style={ styles.headerText }>{props.title}</Text>
             </View>
         </View>
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
         
         marginLeft : 0,
         
-        width : '480%',
+        width : '300%',
         height : '150%',
         flexDirection : 'row',
         alignItems : 'center',
@@ -40,12 +41,20 @@ const styles = StyleSheet.create({
     headerText : {
         fontWeight : 'bold',
         fontSize : 20,
-        color : 'blue',
         letterSpacing : 1, 
     },
     icon : {
         position : 'absolute',
         left : 0,
         color : 'red'
+    },
+    logo : {
+        width : 26,
+        height : 26,
+        marginHorizontal : 10 , 
+
+    },
+    headerContent : {
+        flexDirection : 'row'
     }
 })
