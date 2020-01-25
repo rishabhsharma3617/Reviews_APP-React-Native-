@@ -5,8 +5,10 @@ import About from '../screens/about'
 const screens = {
     About : {
         screen : About,
-        navigationOptions : {
-        headerTitle : () => <Header /> 
+        navigationOptions : (props) => {
+            return {
+                headerTitle : () => <Header navigation={props.navigation}/>
+            }
         }
     }
 }
