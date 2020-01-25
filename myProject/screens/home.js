@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { StyleSheet, Text, View , Button , FlatList , TouchableOpacity , Modal } from 'react-native';
+import { StyleSheet, Text, View , Button , FlatList , TouchableOpacity , Modal , TouchableWithoutFeedback , Keyboard } from 'react-native';
 import { globalStyles } from '../styles/global'
 import Card from '../shared/card'
 import ReviewForm from './reviewForm'
@@ -40,23 +40,33 @@ export default function Home(props) {  //props come here bcoz it automativcaalyy
         
     ])
 
-
+        const addReview = (review) => {
+            review.key = Math.random().toString()
+            setreviews((currentReviews) => {
+                return [ review , ...currentReviews]
+            })
+           
+            setModalOpen(false)
+        }
 
     return (
         <View style={globalStyles.container}>
             
             <Modal visible={modalOpen} animationType='slide'>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.modalContent}>
                     
-            <MaterialIcons 
-            name='close'
-            style={{ ...styles.modalToggle , ...styles.modalCLose}}
-            size={24}
-            onPress = { () => setModalOpen(false)}
-            />
-                <ReviewForm />
-                </View>
-            </Modal>
+                    <MaterialIcons 
+                    name='close'
+                    style={{ ...styles.modalToggle , ...styles.modalCLose}}
+                    size={24}
+                    onPress = { () => setModalOpen(false)}
+                    />
+                        <ReviewForm  addReview={addReview}/>
+                        </View>
+                    
+                </TouchableWithoutFeedback>
+               </Modal>
 
             <MaterialIcons 
             name='add'

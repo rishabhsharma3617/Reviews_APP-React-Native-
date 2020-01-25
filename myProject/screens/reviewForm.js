@@ -3,14 +3,30 @@ import { StyleSheet, Text, View , Button , FlatList , TouchableOpacity , Modal }
 import { globalStyles } from '../styles/global'
 import  { Formik } from 'formik'
 import { TextInput } from 'react-native-gesture-handler';
+import * as Yup from 'yup'
 
-export default function ReviewForm() {
+
+
+const ReviewSchema = Yup.object({
+        title: Yup.string().required()
+        .min(4),
+        body: Yup.string().required()
+        .min(8),
+        rating: Yup.string().required().test('is num 1-5','Rating must be number 1-5', (val) => {
+            return parseInt(val) < 6 && parseInt(val) > 0
+        })
+})
+
+
+export default function ReviewForm(props) {
         return (
             <View style={globalStyles.container}>
                 <Formik
+                    validationSchema={ReviewSchema}
                     initialValues = {{ title : '' , body : '' , rating : ''}}
-                    onSubmit = {(values) => {
-                            console.log(values)
+                    onSubmit = {(values , actions) => {
+                            props.addReview(values)
+                            actions.resetForm()
                     }}
                 >
                     {(props) => (
