@@ -24,7 +24,7 @@ export default function Home(props) {  //props come here bcoz it automativcaalyy
         {   
             title : 'Silicon Valley',
             body : 'A very funny series for the techies and the geeks',
-            rating : 4.5,
+            rating : 2,
             key : '3'
         },
         {
