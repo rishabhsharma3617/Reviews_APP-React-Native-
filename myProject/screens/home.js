@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { StyleSheet, Text, View , Button , FlatList , TouchableOpacity } from 'react-native';
 import { globalStyles } from '../styles/global'
-
+import Card from '../shared/card'
 
 
 export default function Home(props) {  //props come here bcoz it automativcaalyy gets because we defined
@@ -46,7 +46,9 @@ export default function Home(props) {  //props come here bcoz it automativcaalyy
             keyExtractor={item => item.key.toString()}
             renderItem={({ item }) => (
                 <TouchableOpacity onPress={ () => props.navigation.navigate('reviewDetails',item)}>
-                <Text style={globalStyles.titleText}>{ item.title }</Text>
+                    <Card>
+                    <Text style={globalStyles.titleText}>{ item.title }</Text>
+                    </Card>
                 </TouchableOpacity>
             )}
             />
